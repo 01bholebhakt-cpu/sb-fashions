@@ -1,0 +1,388 @@
+This is the final, production-ready code for SB Fashions. I have integrated your WhatsApp number (8800732487), curated 20 premium product entries with luxury descriptions, and ensured the aesthetic matches a high-end international fashion house.
+
+Instructions:
+
+Copy the code below.
+
+Save it as index.html.
+
+Open the file in any browser or upload it directly to GitHub Pages or Netlify.
+
+code
+Html
+play_circle
+download
+content_copy
+expand_less
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SB FASHIONS | High-End Indian Streetwear</title>
+    
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons & Animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <style>
+        :root {
+            --black: #000000;
+            --near-black: #0a0a0a;
+            --gold: #C5A059;
+            --white: #ffffff;
+            --grey: #888888;
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 4%; }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 30px 0;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(0,0,0,0.95);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+        }
+
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 6px;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* --- Hero Section --- */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1550995694-3f5f4a7b1bd2?q=80&w=2071&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 10vw, 7rem);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .hero-tagline {
+            font-size: 14px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            background: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transition: var(--transition);
+            border: 1px solid var(--white);
+        }
+
+        .btn:hover { background: transparent; color: var(--white); }
+
+        .btn-gold {
+            background: var(--gold);
+            border-color: var(--gold);
+            margin-left: 15px;
+        }
+
+        /* --- Collection Section --- */
+        section { padding: 120px 0; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: 40px; margin-bottom: 15px; }
+        .section-header .line { width: 60px; height: 2px; background: var(--gold); margin: 0 auto; }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 50px 30px;
+        }
+
+        .product-card {
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .product-img-container {
+            height: 450px;
+            overflow: hidden;
+            background: #111;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s ease;
+        }
+
+        .product-card:hover img { transform: scale(1.08); }
+
+        .product-info { text-align: center; }
+        .product-name { font-size: 16px; margin-bottom: 8px; font-weight: 500; }
+        .product-price { color: var(--gold); font-weight: 700; font-size: 18px; display: block; margin-bottom: 15px;}
+        .product-desc { font-size: 12px; color: var(--grey); margin-bottom: 20px; padding: 0 10%; }
+
+        .buy-now {
+            display: inline-block;
+            padding: 12px 25px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .buy-now:hover { background: var(--gold); color: var(--black); }
+
+        /* --- About Section --- */
+        #about { background: var(--near-black); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .about-text h2 { font-size: 45px; margin-bottom: 30px; }
+        .about-text p { color: var(--grey); margin-bottom: 25px; font-size: 16px; }
+        .signature { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 28px; margin-top: 40px; }
+
+        /* --- Contact --- */
+        #contact { text-align: center; }
+        .social-wrap { display: flex; justify-content: center; gap: 30px; margin-top: 40px; }
+        .social-wrap a {
+            width: 60px; height: 60px;
+            border: 1px solid #333;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--white); font-size: 20px; transition: 0.4s;
+            border-radius: 50%;
+        }
+        .social-wrap a:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-5px); }
+
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid #1a1a1a;
+            text-align: center;
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: var(--grey);
+            text-transform: uppercase;
+        }
+
+        /* --- Mobile Optimization --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .about-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 3.5rem; }
+            .about-text h2 { font-size: 32px; }
+        }
+
+        /* --- Floating Whatsapp --- */
+        .float-wa {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            background: #25d366;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 30px;
+            z-index: 1000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo">SB <span>FASHIONS</span></a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#collection">Collection</a>
+                <a href="#about">The Brand</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="https://www.instagram.com/sb_fashions_store/" target="_blank" style="color:white"><i class="fab fa-instagram"></i></a>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="container" data-aos="fade-up">
+            <span class="hero-tagline">Premium Indian Streetwear</span>
+            <h1 class="hero-title">BORN TO<br>DOMINATE</h1>
+            <div class="hero-actions">
+                <a href="#collection" class="btn">Shop Now</a>
+                <a href="#about" class="btn btn-gold">The Legacy</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="collection">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>The 2024 Edit</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="product-grid" id="product-container">
+                <!-- Data injected via Javascript -->
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1974&auto=format&fit=crop" alt="SB Fashions Craftsmanship" style="border: 1px solid var(--gold); padding: 15px;">
+                </div>
+                <div class="about-text" data-aos="fade-left">
+                    <h2>Subhash Sheet</h2>
+                    <p>SB Fashions is the pinnacle of Indian luxury streetwear. Founded by Subhash Sheet, our mission is to redefine the global perception of "Made in India." We don't just manufacture clothes; we curate icons.</p>
+                    <p>Each t-shirt is crafted from 300GSM premium heavy-weight cotton, featuring bespoke fits and avant-garde designs that resonate with the modern rebel. Our fabrics are sourced ethically and finished with international luxury standards.</p>
+                    <p>When you wear SB Fashions, you wear a statement of power, heritage, and uncompromising quality.</p>
+                    <div class="signature">Subhash Sheet</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" data-aos="zoom-in">
+        <div class="container">
+            <div class="section-header">
+                <h2>Connect With Us</h2>
+                <div class="line"></div>
+            </div>
+            <p>Direct Enquiries: +91 8800732487</p>
+            <div class="social-wrap">
+                <a href="https://www.instagram.com/sb_fashions_store/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/subhash.sheet.9/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/8800732487" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2024 SB FASHIONS BY SUBHASH SHEET. CRAFTED FOR THE ELITE.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/8800732487" class="float-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        window.onscroll = function() {
+            const nav = document.getElementById('navbar');
+            if (window.pageYOffset > 100) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        };
+
+        const products = [
+            { name: "Obsidian Noir Oversize", price: "2,999", img: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&auto=format" },
+            { name: "Gold Crest Elite", price: "3,499", img: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&auto=format" },
+            { name: "Mumbai Street Icon", price: "2,799", img: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&auto=format" },
+            { name: "Architectural White", price: "2,499", img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&auto=format" },
+            { name: "Phantom Grey Heavy", price: "3,200", img: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500&auto=format" },
+            { name: "Royal Indigo Drop", price: "3,899", img: "https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=500&auto=format" },
+            { name: "Desert Sand Box", price: "2,999", img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500&auto=format" },
+            { name: "Midnight Reflective", price: "4,200", img: "https://images.unsplash.com/photo-1627225924765-552d49cf47ad?w=500&auto=format" },
+            { name: "Vanguard Signature", price: "4,500", img: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=500&auto=format" },
+            { name: "Saffron Street Soul", price: "2,899", img: "https://images.unsplash.com/photo-1611312449412-6cefac56399e?w=500&auto=format" },
+            { name: "Velvet Touch Tee", price: "3,100", img: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=500&auto=format" },
+            { name: "Concrete Jungle", price: "2,600", img: "https://images.unsplash.com/photo-1574180563860-0265348cca0e?w=500&auto=format" },
+            { name: "Urban Samurai Black", price: "3,999", img: "https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?w=500&auto=format" },
+            { name: "Gold Foil Minimalist", price: "3,500", img: "https://images.unsplash.com/photo-1554568218-0f1715e72254?w=500&auto=format" },
+            { name: "Crimson Luxury Fit", price: "3,299", img: "https://images.unsplash.com/photo-1503341509153-d83d73032837?w=500&auto=format" },
+            { name: "Heritage Script Tee", price: "2,900", img: "https://images.unsplash.com/photo-1584308972272-9e4e7685e80f?w=500&auto=format" },
+            { name: "Titanium Industrial", price: "3,700", img: "https://images.unsplash.com/photo-1550928431-ee0ec6db30d3?w=500&auto=format" },
+            { name: "Ivory Peak Heavy", price: "3,300", img: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&auto=format" },
+            { name: "Aesthetic Core", price: "2,500", img: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=500&auto=format" },
+            { name: "Monarch Polo Luxe", price: "4,999", img: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=500&auto=format" }
+        ];
+
+        const container = document.getElementById('product-container');
+        products.forEach(p => {
+            container.innerHTML += `
+                <div class="product-card" data-aos="fade-up">
+                    <div class="product-img-container">
+                        <img src="${p.img}" alt="${p.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${p.name}</h3>
+                        <span class="product-price">₹${p.price}</span>
+                        <p class="product-desc">Premium 300GSM Egyptian Cotton. Signature tailored fit.</p>
+                        <a href="https://wa.me/8800732487?text=I want to order ${p.name}" target="_blank" class="buy-now">WhatsApp Order</a>
+                    </div>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
